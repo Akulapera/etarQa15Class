@@ -9,35 +9,16 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class OpenWikiAndSearchJava {
-    WebDriver wd;
-
-    @BeforeMethod
-    public void setUp() {
-        wd = new ChromeDriver();
-        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-    }
+public class OpenWikiAndSearchJava extends TestBase{
 
     @Test
     public void openSiteTest() {
-        wd.navigate().to("https://en.wikipedia.org");
 
-        wd.findElement(By.name("search")).sendKeys("Java");
+        enterToWiki();
 
-        wd.findElement(By.name("go")).click();
+        writeJavaInFild();
 
-        // wd.findElement(By.cssSelector("i.sprite.svg-search-icon")).click();- єта строчка не работает почему-то,
-        // нашла имя кнопки и через него все побежало.
+        pressButton();
     }
-
-    @AfterMethod
-    public void tearDown() throws InterruptedException {
-        Thread.sleep(5000);
-       wd.quit();
-    }
-
-
-
-
 
 }
