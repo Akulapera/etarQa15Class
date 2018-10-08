@@ -13,30 +13,31 @@ import java.util.concurrent.TimeUnit;
 
 public class Ebay {
 
-  WebDriver wd;
-  @BeforeMethod
-  public void setUp(){
-    wd = new ChromeDriver();
-    wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-  }
+    WebDriver wd;
 
-  @Test
-  public void openSiteTest(){
-    wd.navigate().to("https://www.ebay.com/");
+    @BeforeMethod
+    public void setUp() {
+        wd = new ChromeDriver();
+        wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+    }
 
-    wd.findElement(By.linkText("Sign in")).click();
+    @Test
+    public void openSiteTest() {
+        wd.navigate().to("https://www.ebay.com/");
 
-    wd.findElement(By.name("userid")).sendKeys("gfhgfghfhg");
+        wd.findElement(By.linkText("Sign in")).click();
 
-    wd.findElement(By.name("pass")).sendKeys("fhgjhghg");
+        wd.findElement(By.name("pass")).sendKeys("fhgjhghg");
 
-    wd.findElement(By.id("sgnBt")).click();
-  }
+        wd.findElement(By.name("pass")).sendKeys("hdgf");
 
-  @AfterMethod
-  public void tearDown() throws InterruptedException {
-    Thread.sleep(2000);
-   // wd.quit();
-  }
+        wd.findElement(By.id("sgnBt")).click();
+    }
+
+    @AfterMethod
+    public void tearDown() throws InterruptedException {
+        Thread.sleep(2000);
+        wd.quit();
+    }
 
 }
